@@ -16,14 +16,16 @@ def download_file(url,file_name):
     now = datetime.now()
     # convert to datetime dd/mm/YY H:M:S
     dt_string = now.strftime("%d%m%Y%H%M")
+    destination_path = "./raw_data"
     filename = file_name + str(dt_string) + ".csv"
-    print("Downloading %s ..." % filename)
+    full_file_path = destination_path + "/" + filename
+    print("Downloading %s ..." % full_file_path)
 
-    with open(filename, "wb") as handle:
+    with open(full_file_path, "wb") as handle:
         for data in tqdm(response.iter_content()):
             handle.write(data)
 
-    print("Download complete for %s!" % filename)
+    print("Download complete for %s!" % full_file_path)
 
 if __name__ == '__main__':
     
