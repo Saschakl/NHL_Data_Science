@@ -2,15 +2,21 @@ import requests, urllib
 from tqdm import tqdm
 from datetime import datetime
 
-headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
-login_url = "https://www.moneypuck.com"
-requests_session = requests.Session() # create a requests Session
-response = requests_session.post(login_url, headers=headers) # log in to the requests Session so that you can reuse it
-download_url = "https://www.moneypuck.com/moneypuck/playerData/seasonSummary/2008/regular/goalies.csv"
-response = requests_session.get(download_url, timeout=(15,15))
+
 
 # function to download all files form this site
 def download_file(url,file_name):
+    # add header to prevent error 403
+    headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+    # add login url for all requests
+    login_url = "https://www.moneypuck.com"
+    # create a requests Session
+    requests_session = requests.Session()
+    # log in to the requests Session so that you can reuse it
+    response = requests_session.post(login_url, headers=headers)
+    # the endpoint to the csv file
+    download_url = url
+    response = requests_session.get(download_url, timeout=(15,15))
     # datetime object containing current date and time
     now = datetime.now()
     # convert to datetime dd/mm/YY H:M:S
@@ -29,5 +35,5 @@ def download_file(url,file_name):
 if __name__ == '__main__':
     
     # run function to download file
-    download_file(response.url, "skaters_") 
+    download_file("https://www.moneypuck.com/moneypuck/playerData/seasonSummary/2008/regular/goalies.csv", "skaters_") 
 
