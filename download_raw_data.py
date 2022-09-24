@@ -1,4 +1,3 @@
-from pip import main
 import requests, urllib
 from tqdm import tqdm
 from datetime import datetime
