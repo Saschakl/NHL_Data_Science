@@ -2,7 +2,7 @@
 
 ## Flow-Chart
 - [ ] .csv Daten herunterladen
--- [ ] automatisiert jeden Abend (als erstes lokal, danach auf Webserver)
+-   [ ] automatisiert jeden Abend (als erstes lokal, danach auf Webserver)
 - [ ] Data Select
 - [ ] Data Cleaning
 - [ ] Data Preprocessing
