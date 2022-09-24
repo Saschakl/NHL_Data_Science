@@ -53,10 +53,10 @@ def run_cpu_tasks_in_parallel(tasks):
 if __name__ == '__main__':
         
     run_cpu_tasks_in_parallel([
-    download_period_files("skaters", 2009, 2019),
-    download_period_files("goalies", 2008, 2012),
-    download_period_files("lines", 2010, 2013),
-    download_period_files("teams", 2016, 2021),
+    download_period_files("skaters", 2008, 2022),
+    download_period_files("goalies", 2008, 2022),
+    download_period_files("lines", 2008, 2022),
+    download_period_files("teams", 2008, 2022),
     ])
     
     
