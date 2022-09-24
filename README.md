@@ -2,12 +2,18 @@
 
 ## Flow-Chart
 - [ ] .csv Daten herunterladen
-- [ ] automatisiert jeden Abend (als erstes lokal, danach auf Webserver)
+    - [ ] automatisiert jeden Abend (als erstes lokal, danach auf Webserver)
+    - [ ] python selenium
 - [ ] Data Select
     - [ ] benötigte Spalten auswählen
 - [ ] Data Cleaning
-- [ ] Data Preprocessing
+    - [ ] nicht benötigte Werte löschen/entfernen
 - [ ] Data Processing
+    - [ ] Differenzen aus vergangenen Gamedays und aktuellen Gamedays berechnen
+    - [ ] predictions für playoffs berechnen
+    - [ ] player of the day (kriterien müssen noch bestimmt werden)
 - [ ] Data Saving
+    - [ ] Datenbank POSTGRESQL
 - [ ] Daten auf Website anzeigen
-- [ ] 
+    - [ ] Streamlit evtl. als Prototyp
+    - [ ] PHP / HTML / CSS / JS
