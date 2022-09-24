@@ -51,37 +51,13 @@ def run_cpu_tasks_in_parallel(tasks):
 
 
 if __name__ == '__main__':
-    
-    start_time = time.time()
-    
+        
     run_cpu_tasks_in_parallel([
     download_period_files("skaters", 2009, 2019),
     download_period_files("goalies", 2008, 2012),
     download_period_files("lines", 2010, 2013),
     download_period_files("teams", 2016, 2021),
     ])
-    
-    
-    
-    """
-    process1 = multiprocessing.Process(target=download_period_files("skaters", 2009, 2019))
-    process2 = multiprocessing.Process(target=download_period_files("goalies", 2008, 2012))
-    process3 = multiprocessing.Process(target=download_period_files("lines", 2010, 2013))
-    process4 = multiprocessing.Process(target=download_period_files("teams", 2016, 2021))
-    
-    process1.start()
-    process2.start()
-    process3.start()
-    process4.start()
-    
-    process1.join()
-    process2.join()
-    process3.join()
-    process4.join()
-    """
-
-    
-    print(time.time() - start_time, "seconds")
     
     
     
