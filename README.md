@@ -2,7 +2,7 @@
 
 ## Flow-Chart
 - [ ] .csv Daten herunterladen
-    - [ ] automatisiert jeden Abend (als erstes lokal, danach auf Webserver)
+    - [ ] automatisiert jeden Abend (als erstes lokal, danach auf Webserver) => aktuelle laufzeit: 70.36010074615479 seconds
     - [ ] python selenium
 - [ ] Data Select
     - [ ] benötigte Spalten auswählen
