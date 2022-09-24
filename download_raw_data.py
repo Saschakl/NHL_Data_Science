@@ -1,7 +1,7 @@
 import requests, urllib
 from tqdm import tqdm
 from datetime import datetime
-
+import concurrent.futures
 
 
 # function to download all files form this site
@@ -31,15 +31,23 @@ def download_file(url,file_name):
             handle.write(data)
 
     print("Download complete for %s!" % full_file_path)
+    
+def download_period_files(position, start_year, end_year):
+    # run function to download files for skaters in certain time period 
+    start_year = start_year 
+    end_year = end_year
+    while start_year <= end_year:
+        download_file("https://www.moneypuck.com/moneypuck/playerData/seasonSummary/{}/regular/{}.csv".format(start_year, position), "{}_{}_".format(position, start_year))
+        start_year += 1
+    
 
 if __name__ == '__main__':
     
-    # run function to download files for goalies in certain time period 
-    start_year_goalies = 2009 
-    end_year_goalies = 2019
+    download_period_files("skaters", 2009, 2019)
+    download_period_files("goalies", 2008, 2012)
+    download_period_files("lines", 2010, 2013)
+    download_period_files("teams", 2016, 2021)
     
     
-    while start_year_goalies <= end_year_goalies:
-        download_file("https://www.moneypuck.com/moneypuck/playerData/seasonSummary/{}/regular/goalies.csv".format(start_year_goalies), "goalies_{}_".format(start_year_goalies))
-        start_year_goalies += 1
-
+    
+    
