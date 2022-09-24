@@ -1,7 +1,8 @@
-import requests, urllib
-from tqdm import tqdm
+import time
+import requests
 from datetime import datetime
-import concurrent.futures
+from multiprocessing import Process
+from concurrent.futures import ThreadPoolExecutor
 
 
 # function to download all files form this site
@@ -27,7 +28,7 @@ def download_file(url,file_name):
     print("Downloading %s ..." % full_file_path)
 
     with open(full_file_path, "wb") as handle:
-        for data in tqdm(response.iter_content()):
+        for data in response.iter_content():
             handle.write(data)
 
     print("Download complete for %s!" % full_file_path)
@@ -41,12 +42,46 @@ def download_period_files(position, start_year, end_year):
         start_year += 1
     
 
+def run_cpu_tasks_in_parallel(tasks):
+    running_tasks = [Process(target=task) for task in tasks]
+    for running_task in running_tasks:
+        running_task.start()
+    for running_task in running_tasks:
+        running_task.join()
+
+
 if __name__ == '__main__':
     
-    download_period_files("skaters", 2009, 2019)
-    download_period_files("goalies", 2008, 2012)
-    download_period_files("lines", 2010, 2013)
-    download_period_files("teams", 2016, 2021)
+    start_time = time.time()
+    
+    run_cpu_tasks_in_parallel([
+    download_period_files("skaters", 2009, 2019),
+    download_period_files("goalies", 2008, 2012),
+    download_period_files("lines", 2010, 2013),
+    download_period_files("teams", 2016, 2021),
+    ])
+    
+    
+    
+    """
+    process1 = multiprocessing.Process(target=download_period_files("skaters", 2009, 2019))
+    process2 = multiprocessing.Process(target=download_period_files("goalies", 2008, 2012))
+    process3 = multiprocessing.Process(target=download_period_files("lines", 2010, 2013))
+    process4 = multiprocessing.Process(target=download_period_files("teams", 2016, 2021))
+    
+    process1.start()
+    process2.start()
+    process3.start()
+    process4.start()
+    
+    process1.join()
+    process2.join()
+    process3.join()
+    process4.join()
+    """
+
+    
+    print(time.time() - start_time, "seconds")
     
     
     
