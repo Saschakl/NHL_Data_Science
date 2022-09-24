@@ -34,6 +34,12 @@ def download_file(url,file_name):
 
 if __name__ == '__main__':
     
-    # run function to download file
-    download_file("https://www.moneypuck.com/moneypuck/playerData/seasonSummary/2008/regular/goalies.csv", "skaters_") 
+    # run function to download files for goalies in certain time period 
+    start_year_goalies = 2009 
+    end_year_goalies = 2019
+    
+    
+    while start_year_goalies <= end_year_goalies:
+        download_file("https://www.moneypuck.com/moneypuck/playerData/seasonSummary/{}/regular/goalies.csv".format(start_year_goalies), "goalies_{}_".format(start_year_goalies))
+        start_year_goalies += 1
 
