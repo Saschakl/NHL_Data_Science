@@ -4,6 +4,7 @@
 - [ ] .csv Daten herunterladen
 -   [ ] automatisiert jeden Abend (als erstes lokal, danach auf Webserver)
 - [ ] Data Select
+-   [ ] benötigte Spalten auswählen
 - [ ] Data Cleaning
 - [ ] Data Preprocessing
 - [ ] Data Processing
