@@ -20,6 +20,7 @@ for skater in skaterslist:
     temp_df = pd.read_csv(skater)
     
     
+    
     dataframes_list.append(temp_df)
      
 # display datasets
